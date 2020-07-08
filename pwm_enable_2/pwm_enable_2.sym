@@ -1,0 +1,97 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004     @WRITE_PROGRAM_MEMORY8.P2
+008     lcdlat
+008     PSP_DATA
+008     lcd
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020-021 pot
+022     boton
+023     boton2
+024     Timer2
+025     Poscaler
+026     @TRIS_C
+027     lcd_init.i
+027     @PSTRINGC7_93.@SCRATCH1
+028     lcd_init.@SCRATCH1
+028     @PSTRINGC7_93.@SCRATCH2
+029     @PSTRINGC7_93.@SCRATCH3
+02A     lcd_putc.c
+02B     @delay_ms1.P1
+02B     lcd_gotoxy.x
+02C     lcd_gotoxy.y
+02D     lcd_gotoxy.address
+02E     lcd_gotoxy.@SCRATCH1
+02F     lcd_send_byte.address
+030     lcd_send_byte.n
+031     lcd_read_byte.low
+031     lcd_send_byte.@SCRATCH1
+032     lcd_read_byte.high
+032     lcd_send_nibble.n
+033     lcd_read_byte.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+088     lcdtris
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+0077  @delay_ms1
+0004  LCD_INIT_STRING
+002B  lcd_read_byte
+0018  lcd_read_nibble
+001E  lcd_send_nibble
+002A  lcd_send_byte
+00B1  lcd_init
+0065  lcd_gotoxy
+008C  lcd_putc
+0125  MAIN
+000C  @const110
+00DF  @PSTRINGC7_93
+0011  @const112
+0125  @cinit
+
+
+User Memory space: 
+
+User Memory space: 
+
+Project Directory:
+    C:\Users\VAIOPC\Documents\ADATA\Adquisicion\Youngg board\pwm_enable_2\
+
+Project Files:
+    pwm_enable_2.c
+    pwm_enable_2.h
+    ..\..\..\..\..\..\..\Program Files\PICC\devices\16F877A.h
+    ..\..\..\..\..\..\..\Program Files\PICC\drivers\lcd.c
+
+Units:
+    C:\Users\VAIOPC\Documents\ADATA\Adquisicion\Youngg board\pwm_enable_2\pwm_enable_2 (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      pwm_enable_2.err
+    Ext Symbols: pwm_enable_2.esym
+    INHX8:       pwm_enable_2.hex
+    Symbols:     pwm_enable_2.sym
+    List:        pwm_enable_2.lst
+    Debug/COFF:  pwm_enable_2.cof
+    Project:     pwm_enable_2.PJT
+    Call Tree:   pwm_enable_2.tre
+    Statistics:  pwm_enable_2.sta

@@ -1,0 +1,59 @@
+
+ROM used: 606 (7%)
+          606 (7%) including unused fragments
+
+          1 Average locations per line
+          5 Average locations per statement
+
+RAM used: 12 (3%) at main() level
+          25 (7%) worst case
+
+Stack used: 5 worst case (out of 8 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   68    51  43  pwm_enable_2.c
+   26     0   0  pwm_enable_2.h
+  326     0   0  ..\..\..\..\..\..\..\Program Files\PICC\devices\16F877A.h
+  348    67  57  ..\..\..\..\..\..\..\Program Files\PICC\drivers\lcd.c
+----- -----
+  768   118 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     21   3   1             @delay_ms1
+0      8   1   0   212  2.3  @const76
+ Inline        3   587  6.0  lcd_read_byte
+0      6   1   0    59  4.2  lcd_read_nibble
+0     12   2   1   172  3.4  lcd_send_nibble
+0     59  10   3   317  4.3  lcd_send_byte
+0     46   8   2   624  5.8  lcd_init
+0     18   3   4   186  5.5  lcd_gotoxy
+0     37   6   1   272  4.1  lcd_putc
+0    313  52   0  1652  4.4  MAIN
+0      5   1   0             @const110
+0     70  12   3             @PSTRINGC7_93
+0      7   1   0             @const112
+
+Program metrics:
+    Functions               9
+    Statements              118
+    Comments                156
+    Volume (V)              6042
+    Difficilty (D)          38.4
+    Effort to implement (E) 231724
+    Time to implement (T)   3 hours, 35 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   11
+    Maintainability (MI)    103
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-007FF   602  1442  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+
