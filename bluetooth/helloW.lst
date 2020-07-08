@@ -1,0 +1,281 @@
+CCS PCM C Compiler, Version 4.104, 5967               08-jul.-19 16:54
+
+               Filename: C:\Users\agustin\Documents\Youngg board\bluetooth\helloW.lst
+
+               ROM used: 202 words (2%)
+                         Largest free fragment is 2048
+               RAM used: 7 (2%) at main() level
+                         9 (2%) worst case
+               Stack:    2 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   080
+0003:  NOP
+.................... #include "C:\Users\agustin\Documents\Youngg board\bluetooth\helloW.h" 
+.................... #include <16F877A.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+.................... #list 
+....................  
+.................... #device adc=8 
+....................  
+.................... #FUSES NOWDT                    //No Watch Dog Timer 
+.................... #FUSES HS                       //High speed Osc (> 4mhz for PCM/PCH) (>10mhz for PCD) 
+.................... #FUSES PUT                      //No Power Up Timer 
+.................... #FUSES NOPROTECT                //Code not protected from reading 
+.................... #FUSES NODEBUG                  //No Debug mode for ICD 
+.................... #FUSES NOBROWNOUT               //No brownout reset 
+.................... #FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+.................... #FUSES NOCPD                    //No EE protection 
+.................... #FUSES NOWRT                    //Program memory not write protected 
+.................... #FUSES RESERVED                 //Used to set the reserved FUSE bits 
+....................  
+.................... #use delay(clock=4000000) 
+*
+0004:  MOVLW  23
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  01
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  4A
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  RETURN
+.................... #use rs232(baud=9600,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8) 
+....................  
+....................  
+....................   #ZERO_RAM 
+.................... void code(); 
+.................... void config(); 
+.................... int symonsays; 
+.................... void main() 
+.................... { 
+*
+0080:  MOVF   03,W
+0081:  ANDLW  1F
+0082:  MOVWF  03
+0083:  MOVLW  57
+0084:  MOVWF  77
+0085:  MOVLW  20
+0086:  MOVWF  04
+0087:  BCF    03.7
+0088:  CLRF   00
+0089:  INCF   04,F
+008A:  DECFSZ 77,F
+008B:  GOTO   088
+008C:  CLRF   78
+008D:  CLRF   79
+008E:  CLRF   7A
+008F:  CLRF   7B
+0090:  CLRF   7C
+0091:  CLRF   7D
+0092:  CLRF   7E
+0093:  MOVLW  50
+0094:  MOVWF  77
+0095:  MOVLW  A0
+0096:  MOVWF  04
+0097:  BCF    03.7
+0098:  CLRF   00
+0099:  INCF   04,F
+009A:  DECFSZ 77,F
+009B:  GOTO   098
+009C:  MOVLW  60
+009D:  MOVWF  77
+009E:  MOVLW  10
+009F:  MOVWF  04
+00A0:  BSF    03.7
+00A1:  CLRF   00
+00A2:  INCF   04,F
+00A3:  DECFSZ 77,F
+00A4:  GOTO   0A1
+00A5:  BCF    03.7
+00A6:  MOVLW  60
+00A7:  MOVWF  77
+00A8:  MOVLW  90
+00A9:  MOVWF  04
+00AA:  BSF    03.7
+00AB:  CLRF   00
+00AC:  INCF   04,F
+00AD:  DECFSZ 77,F
+00AE:  GOTO   0AB
+00AF:  BCF    03.7
+00B0:  CLRF   20
+00B1:  CLRF   04
+00B2:  BCF    03.7
+00B3:  MOVLW  1F
+00B4:  ANDWF  03,F
+00B5:  MOVLW  19
+00B6:  BSF    03.5
+00B7:  MOVWF  19
+00B8:  MOVLW  A6
+00B9:  MOVWF  18
+00BA:  MOVLW  90
+00BB:  BCF    03.5
+00BC:  MOVWF  18
+00BD:  BSF    03.5
+00BE:  BSF    1F.0
+00BF:  BSF    1F.1
+00C0:  BSF    1F.2
+00C1:  BCF    1F.3
+00C2:  MOVLW  07
+00C3:  MOVWF  1C
+....................  code(); 
+*
+00C7:  GOTO   019
+....................  config(); 
+00C8:  GOTO   03E
+.................... } 
+.................... void code() 
+.................... { 
+00C9:  SLEEP
+....................   while(true) 
+....................   { 
+....................     symonsays = getc();  
+*
+0019:  BTFSS  0C.5
+001A:  GOTO   019
+001B:  MOVF   1A,W
+001C:  MOVWF  20
+....................     if(symonsays == 1) 
+001D:  DECFSZ 20,W
+001E:  GOTO   036
+....................     { 
+....................      output_high(PIN_A0); 
+001F:  BSF    03.5
+0020:  BCF    05.0
+0021:  BCF    03.5
+0022:  BSF    05.0
+....................      delay_ms(300); 
+0023:  MOVLW  02
+0024:  MOVWF  22
+0025:  MOVLW  96
+0026:  MOVWF  23
+0027:  CALL   004
+0028:  DECFSZ 22,F
+0029:  GOTO   025
+....................      output_low(PIN_A0); 
+002A:  BSF    03.5
+002B:  BCF    05.0
+002C:  BCF    03.5
+002D:  BCF    05.0
+....................      delay_ms(300); 
+002E:  MOVLW  02
+002F:  MOVWF  22
+0030:  MOVLW  96
+0031:  MOVWF  23
+0032:  CALL   004
+0033:  DECFSZ 22,F
+0034:  GOTO   030
+....................     } 
+....................     else 
+0035:  GOTO   03A
+....................     { 
+....................      output_low(PIN_A0); 
+0036:  BSF    03.5
+0037:  BCF    05.0
+0038:  BCF    03.5
+0039:  BCF    05.0
+....................     } 
+....................   } 
+003A:  GOTO   019
+.................... } 
+003B:  BCF    0A.3
+003C:  BCF    0A.4
+003D:  GOTO   0C8 (RETURN)
+.................... void config() 
+.................... { 
+....................    setup_adc_ports(NO_ANALOGS); 
+003E:  BSF    03.5
+003F:  BSF    1F.0
+0040:  BSF    1F.1
+0041:  BSF    1F.2
+0042:  BCF    1F.3
+....................    setup_adc(ADC_CLOCK_DIV_2); 
+0043:  BCF    1F.6
+0044:  BCF    03.5
+0045:  BCF    1F.6
+0046:  BCF    1F.7
+0047:  BSF    03.5
+0048:  BCF    1F.7
+0049:  BCF    03.5
+004A:  BSF    1F.0
+....................    setup_psp(PSP_DISABLED); 
+004B:  BSF    03.5
+004C:  BCF    09.4
+....................    setup_spi(SPI_SS_DISABLED); 
+004D:  BCF    03.5
+004E:  BCF    14.5
+004F:  BCF    21.5
+0050:  MOVF   21,W
+0051:  BSF    03.5
+0052:  MOVWF  07
+0053:  BCF    03.5
+0054:  BSF    21.4
+0055:  MOVF   21,W
+0056:  BSF    03.5
+0057:  MOVWF  07
+0058:  BCF    03.5
+0059:  BCF    21.3
+005A:  MOVF   21,W
+005B:  BSF    03.5
+005C:  MOVWF  07
+005D:  MOVLW  01
+005E:  BCF    03.5
+005F:  MOVWF  14
+0060:  MOVLW  00
+0061:  BSF    03.5
+0062:  MOVWF  14
+....................    setup_timer_0(RTCC_INTERNAL|RTCC_DIV_1); 
+0063:  MOVF   01,W
+0064:  ANDLW  C7
+0065:  IORLW  08
+0066:  MOVWF  01
+....................    setup_timer_1(T1_DISABLED); 
+0067:  BCF    03.5
+0068:  CLRF   10
+....................    setup_timer_2(T2_DISABLED,0,1); 
+0069:  MOVLW  00
+006A:  MOVWF  78
+006B:  MOVWF  12
+006C:  MOVLW  00
+006D:  BSF    03.5
+006E:  MOVWF  12
+....................    setup_comparator(NC_NC_NC_NC); 
+006F:  MOVLW  07
+0070:  MOVWF  1C
+0071:  MOVF   05,W
+0072:  MOVWF  05
+0073:  MOVLW  03
+0074:  MOVWF  77
+0075:  DECFSZ 77,F
+0076:  GOTO   075
+0077:  MOVF   1C,W
+0078:  BCF    03.5
+0079:  BCF    0D.6
+....................    setup_vref(FALSE); 
+007A:  BSF    03.5
+007B:  CLRF   1D
+....................  
+....................    // TODO: USER CODE!! 
+.................... } 
+007C:  BCF    03.5
+007D:  BCF    0A.3
+007E:  BCF    0A.4
+007F:  GOTO   0C9 (RETURN)
+
+Configuration Fuses:
+   Word  1: 3F32   HS NOWDT PUT NODEBUG NOPROTECT NOBROWNOUT NOLVP NOCPD NOWRT
